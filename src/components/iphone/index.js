@@ -3,9 +3,10 @@ import { h, render, Component } from 'preact';
 // import stylesheets for ipad & button
 import style from './style';
 import style_iphone from '../button/style_iphone';
+import ListBtn from '../ListBtn';
+import plane_style from '../Bottom_plane/plane_style';
 // import jquery for API calls
 import $ from 'jquery';
-import Bottom_plane from '../Bottom_plane';
 // import the Button component
 import Button from '../button';
 
@@ -35,6 +36,9 @@ export default class Iphone extends Component {
 		this.setState({ display: false });
 	}
 
+	accountFunction = () =>
+	{window.alert("this is an Account call");}
+
 	// the main render method for the iphone component
 	render() {
 		// check if temperature data is fetched, if so add the sign styling to the page
@@ -52,7 +56,16 @@ export default class Iphone extends Component {
 				<div class= { style_iphone.container }> 
 					{ this.state.display ? <Button class={ style_iphone.button } clickFunction={ this.fetchWeatherData }/ > : null }
 				</div>
-				<Bottom_plane/>
+				<div class ={plane_style.container}>
+				<ul>
+					<ListBtn img ='../../assets/icons/star.png' text= "Favorites"/>
+            		<ListBtn img ='../../assets/icons/explore.png' text ="Explore"/>
+       	    		<ListBtn img ='../../assets/icons/surfcastbutton.png' w = "20" h = "30"/>
+          			<ListBtn img ='../../assets/icons/feed.png' text ="Feed"/>
+            		<ListBtn img ='../../assets/icons/account.png' text ="Account" clickFunction = {this.accountFunction}/>
+
+				</ul>
+				</div>
 			</div>
 		);
 	}
