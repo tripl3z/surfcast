@@ -23,6 +23,13 @@ export default class Iphone extends Component {
 		this.state.temp = "";
 		// button display state
 		this.setState({ display: true, displayPic: false });
+		this.setState({
+					fav: false,
+					exp: false,
+					surfCst: false,
+					feed: false,
+					acc: false
+				});
 	}
 
 
@@ -40,21 +47,17 @@ export default class Iphone extends Component {
 		this.setState({ display: false });
 	}
 
-	accountFunction = () =>
-	{window.alert("this is an Account call");}
-
 	// the main render method for the iphone component
 	render() {
 		// check if temperature data is fetched, if so add the sign styling to the page
 		const tempStyles = this.state.temp ? `${style.temperature} ${style.filled}` : style.temperature;
 
-		// display all weather data
 		return (
 			<div class={ style.container }>
 				<div class= { style_iphone.container }>
-					{ this.state.display ? <Button class={ style_iphone.button } clickFunction={ this.fetchWeatherData }/ > : null }
+					{ this.state.display ? <Button class={ style_iphone.button} clickFunction = {this.fetchWeatherData} / > : null }
 				</div>
-				<div>
+				{this.state.surfCst ? <div> 
 				  <table class ={table_style.container}>
 					<tr>
 					<td>12am</td>
@@ -77,22 +80,80 @@ export default class Iphone extends Component {
 							<td>{this.state.temp7}</td>
 						</tr>
 					</table>
-				</div>
+				</div>: null}
+				{this.state.fav ? <div class ={table_style.container}>
+
+					<p>This is for favourtes</p>
+
+				</ div> : null}
+
+				{this.state.exp ? <div class ={table_style.container}>
+
+					<p>This is for explore</p>
+					
+				</ div> : null}
+
+				{this.state.feed ? <div class ={table_style.container}>
+
+					<p>This is for feed</p>
+					
+				</ div> : null}
+
+				{this.state.acc ? <div class ={table_style.container}>
+
+					<p>This is for account</p>
+					
+				</ div> : null}
+
 				<div class ={plane_style.container}>
 				<ul>
-					<ListBtn img ='../../assets/icons/star.png' text= "Favorites"/>
-            		<ListBtn img ='../../assets/icons/explore.png' text ="Explore" clickFunction = {this.fetchWeatherData}/>
-       	    		<ListBtn img ='../../assets/icons/surfcastbutton.png' w = "20" h = "30" clickFunction = {this.fetchWeatherData}/>
-          			<ListBtn img ='../../assets/icons/feed.png' text ="Feed"/>
-            		<ListBtn img ='../../assets/icons/account.png' text ="Account" clickFunction = {this.accountFunction}/>
+					<ListBtn img ='../../assets/icons/star.png' text= "Favorites" clickFunction = {() => {this.setState({
+					fav: true,
+					exp: false,
+					surfCst: false,
+					feed: false,
+					acc: false
+				});}}/>
+            		<ListBtn img ='../../assets/icons/explore.png' text ="Explore" clickFunction = {() => {this.setState({
+					fav: false,
+					exp: true,
+					surfCst: false,
+					feed: false,
+					acc: false
+				});}} />
+       	    		<ListBtn img ='../../assets/icons/surfcastbutton.png' w = "20" h = "30" clickFunction = {() => {this.setState({
+					fav: false,
+					exp: false,
+					surfCst: true,
+					feed: false,
+					acc: false
+				});}} />
+          			<ListBtn img ='../../assets/icons/feed.png' text ="Feed" clickFunction = {() => {this.setState({
+					fav: false,
+					exp: false,
+					surfCst: false,
+					feed: true,
+					acc: false
+				});}} />
+            		<ListBtn img ='../../assets/icons/account.png' text ="Account" clickFunction = {() => {this.setState({
+					fav: false,
+					exp: false,
+					surfCst: false,
+					feed: false,
+					acc: true
+				});}} />
 
 				</ul>
 				</div>
+
 			</div>
 		);
 	}
 
 	parseResponse = (parsed_json) => {
+		var jsonArr = [];
+		jsonArr.push(parsed_json);
+		window.alert(jsonArr[0]['condition']['weather']);
 		this.setState({
 		  temp0:parsed_json[0]['condition']['weather'],
 			temp1:parsed_json[1]['condition']['weather'],
