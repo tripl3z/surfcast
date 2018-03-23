@@ -1,0 +1,16 @@
+.tideTable {
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid #F3F7F8;
+  border-top: 3px solid #F3F7F8;
+  background: white;
+
+  tr {
+	vertical-align: center;
+	height: 40px;
+	td {
+	  text-align: center;
+	  border: 2px solid #F3F7F8;
+	}
+  }
+}

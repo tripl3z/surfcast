@@ -1,0 +1,58 @@
+@import '~style/helpers';
+
+.headerContainer {
+  height: $header-height;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 1000;
+}
+
+.header {
+  flex: 1;
+  height: 40px;
+  background: #284893;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 16px;
+  overflow: hidden;
+  border-bottom: 1px solid white;
+
+  > img {
+	width: 15px;
+	height: 15px;
+	margin-left: 15px;
+	flex: 0 auto;
+  }
+
+  > div:nth-of-type(1) {
+	color: white;
+	flex: 1;
+	padding-left: 10px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+  }
+}
+
+.doneButton {
+  color: white;
+  padding-left: 10px;
+  padding-right: 15px;
+
+  user-select: none;
+  cursor: pointer;
+}
+
+.searchContainer {
+  display: flex;
+  overflow: visible;
+  flex: 1;
+  height: 50px;
+}

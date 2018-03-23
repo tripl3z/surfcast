@@ -1,0 +1,40 @@
+@import '~style/helpers';
+
+.item {
+  height: 50px;
+  margin-bottom: 5px;
+  background: white;
+  border-radius: 3px;
+  padding-left: 10px;
+  line-height: 40px;
+  user-select: none;
+  cursor: pointer;
+
+  >img {
+	float: left;
+	height: 25px;
+	width: 25px;
+	margin-top: 12px;
+  }
+
+  >div {
+	float: left;
+	height: 100%;
+	line-height: 52px;
+	margin-left: 10px;
+	font-size: 14px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+  }
+}
+
+.itemActive {
+  composes: item;
+  border: 2px solid $active-spot-color;
+  background: $active-spot-color;
+
+  >div {
+	color: white;
+  }
+}

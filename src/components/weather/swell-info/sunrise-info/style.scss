@@ -1,0 +1,17 @@
+.sunriseTable {
+  width: 100%;
+  background: white;
+  border-collapse: collapse;
+  border: 2px solid #F3F7F8;
+  border-top: 3px solid #F3F7F8;
+
+  tr {
+	vertical-align: center;
+	height: 40px;
+	td {
+	  text-align: center;
+	  border: 2px solid #F3F7F8;
+	  width: 50%;
+	}
+  }
+}
